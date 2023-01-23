@@ -1,0 +1,33 @@
+<header class="p-3 mb-3 border-bottom">
+  <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <h3 style="cursor: pointer;" routerLink="/">Vesile </h3>
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                  <use xlink:href="#bootstrap" />
+              </svg>
+          </a>
+
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="" class="nav-link px-2 link-dark">Anasayfa</a></li>
+              <li><a href="kategoriler" class="nav-link px-2 link-dark">Kategoriler</a></li>
+              <li><a href="sorular" class="nav-link px-2 link-dark">Sorular</a></li>
+              <li><a href="cevaplar" class="nav-link px-2 link-dark"> Cevaplar</a></li>
+              <li><a href="uyeler" class="nav-link px-2 link-dark" >Üyeler</a></li>
+          </ul>
+          <div class="text-end">
+              <button class="btn btn-primary btn-sm" [routerLink]="['/login']" *ngIf="!servis.OturumKontrol()"> <i class="bi bi-box-arrow-in-right"></i> Giriş
+                  Yap</button>
+
+              <button class="btn btn-outline-primary btn-sm" (click)="OturumKapat()"
+                  *ngIf="servis.OturumKontrol()"> <i class="bi bi-box-arrow-right"></i> Çıkış Yap</button>
+
+          </div>
+          <h4>
+              <div class="badge bg-info mt-2 ms-2" *ngIf="servis.aktifUye.admin=='1'">{{fbservis.aktifUye.adsoyad}}</div>
+              <div class="badge bg-danger mt-2 ms-2" *ngIf="servis.aktifUye.admin=='0'">{{fbservis.aktifUye.adsoyad}}</div>
+          </h4>
+      </div>
+  </div>
+</header>
+<router-outlet></router-outlet>

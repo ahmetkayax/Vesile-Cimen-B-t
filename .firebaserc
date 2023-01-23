@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "hoca-920e4": {
+      "hosting": {
+        "fbuyg": [
+          "hoca-920e4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "hoca-920e4"
+  }
+}

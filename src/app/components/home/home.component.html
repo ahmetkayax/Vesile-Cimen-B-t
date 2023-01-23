@@ -1,0 +1,106 @@
+<div class="container mt-5">
+
+    <button class="btn btn-success mb-3" (click)="EkleSoru(modalEkleSoru)">Soru Sor</button>
+    <button class="btn btn-outline-success mb-3 ms-3" (click)="EkleCevap(modalEkleCevap)">Cevaplamak İçin Tıklayınız </button>
+
+
+<h3>Sorular</h3>
+    <ul class="list-group">
+        <li class="list-group-item fs-" *ngFor="let soru of sorular"> {{soru.id}}- {{soru.soru}}
+        </li>
+    </ul>
+</div>
+
+
+<div class="modal" tabindex="-1" #modalEkleCevap>
+    <div class="modal-dialog">
+        <form [formGroup]="frmcevap" (ngSubmit)="CevapEkle()">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">{{modalBaslik}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Cevaplamak İstediğiniz Soruyu Seçiniz</label>
+                        <select class="form-control" formControlName="questionId">
+                            <option [value]="soru.id" *ngFor="let soru of sorular">{{soru.soru}}</option>
+                        </select>
+                        <label>Cevap</label>
+                        <input type="text" class="form-control" formControlName="cevap">
+                        <input type="hidden" class="form-control" formControlName="id">
+                        <input type="hidden" class="form-control" formControlName="kaytarih">
+                        <input type="hidden" class="form-control" formControlName="duztarih">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-outline-success" value="Kaydet">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="modal" tabindex="-1" #modalEkleSoru>
+    <div class="modal-dialog">
+        <form [formGroup]="frmsoru" (ngSubmit)="SoruEkle()">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">{{modalBaslik}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Soru</label>
+                        <input type="text" class="form-control" formControlName="soru">
+                        <label>Sorunun Kategorisi</label>
+                        
+                        <select class="form-control" formControlName="categoryId">
+                            <option [value]="kategori.id" *ngFor="let kategori of kategoriler">{{kategori.adi}}</option>
+                        </select>
+                        
+                        <input type="hidden" class="form-control" formControlName="id">
+                        <input type="hidden" class="form-control" formControlName="kaytarih">
+                        <input type="hidden" class="form-control" formControlName="duztarih">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-outline-success" value="Kaydet">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <!-- <table class="table table-striped">
+    <thead>
+        <th> <h3>Sorular</h3> </th>
+    </thead>
+    <tbody>
+        <hr>
+        <tr *ngFor="let soru of sorular">
+
+            <td>
+                <form [formGroup]="frm" (ngSubmit)="CevapEkle()">
+                    {{soru.soru}}
+                    <input class="form-control  mt-2" type="text" formControlName="cevap">
+                    <input class="form-control  mt-2" type="hidden" formControlName="id">
+                    <input class="form-control  mt-2" type="hidden" formControlName="kaytarih">
+                    <input class="form-control  mt-2" type="hidden" formControlName="duztarih">
+                    <input class="form-control  mt-2" type="hidden" [value]="soru.id" formControlName="questionId">
+                    <input type="submit" class="btn btn-outline-success mt-2" value="Cevapla">
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table> -->
